@@ -3,6 +3,7 @@ import './App.css';
 
 import data from './datasources/foo.json';
 
+import GitHubLink from './components/GitHubLink';
 import MyBox from './components/MyBox/';
 
 export const AppContext = React.createContext({});
@@ -17,6 +18,7 @@ function App() {
           <MyBox />
         </AppContext.Provider>
       </div>
+      <GitHubLink />
     </div>
   );
 }

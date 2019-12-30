@@ -1,0 +1,9 @@
+.GitHubLink {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  width: 32px;
+  height: 32px;
+  opacity: 50%;
+}
