@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Polly",
+  "name": "Polly: Polyglot language learning tools",
   "icons": [
     {
       "src": "favicon.ico",
