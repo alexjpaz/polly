@@ -1,0 +1,7 @@
+.TargetPhrase {
+  text-decoration: dotted;
+}
+
+.TargetPhrase .is-speaking {
+  background: red;
+}

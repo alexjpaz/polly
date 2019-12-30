@@ -1,0 +1,16 @@
+{
+    "phrases": [
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "The apple is red",
+            "targetLanguageCode": "es-Mx",
+            "target": "La manzana es roja"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "It is John's apple",
+            "targetLanguageCode": "es-Mx",
+            "target": "Es la manzana de John"
+        }
+    ]
+}

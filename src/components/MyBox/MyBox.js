@@ -1,22 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { AppContext } from '../../App';
 
 import './MyBox.css';
 
-function TargetPhrase({ phrase }) {
-  return (
-    <h1>{phrase}</h1>
-  );
-}
+import TargetPhrase from './TargetPhrase'
 
 function MyBox() {
-  const { foo } = useContext(AppContext);
+  const data = useContext(AppContext);
+
+  let [ state, setState ] = useState({
+    phrase: data.phrases[0],
+    index: 0
+  });
 
   return (
 
     <div className='MyBox'>
-      <TargetPhrase phrase={foo} />
+      <TargetPhrase phrase={state.phrase} />
+
+      <button onClick={() => {
+        let index = state.index + 1;
+
+        if(index >= data.phrases.length) {
+          index = 0;
+        }
+
+        setState({
+          phrase: data.phrases[index],
+          index
+        });
+      }}>next</button>
     </div>
   );
 }
