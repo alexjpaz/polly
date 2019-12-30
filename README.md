@@ -2,7 +2,7 @@
 
 > Polyglot language learning tools 
 
-[![Build Status](https://travis-ci.org/alexjpaz-playground/speak-test.svg?branch=master)](https://travis-ci.org/alexjpaz-playground/speak-test)
+[![Build Status](https://travis-ci.org/alexjpaz-playground/polly.svg?branch=master)](https://travis-ci.org/alexjpaz-playground/polly)
 
 ---
 
