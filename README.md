@@ -1,3 +1,11 @@
+# 🦜 polly
+
+> Polyglot language learning tools 
+
+[![Build Status](https://travis-ci.org/alexjpaz-playground/speak-test.svg?branch=master)](https://travis-ci.org/alexjpaz-playground/speak-test)
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
