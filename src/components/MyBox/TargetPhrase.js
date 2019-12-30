@@ -48,7 +48,7 @@ function RecognitionText({ recognition }) {
     recognition.onresult = (e) => {
       if(!e.results) return;
 
-      let { transcript, confidence } = e.results[0][0];
+      let { transcript, } = e.results[0][0];
 
       setText(<div><h1>{transcript}</h1></div>)
     }

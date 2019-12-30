@@ -8,7 +8,7 @@ import MyBox from './components/MyBox/';
 export const AppContext = React.createContext({});
 
 function App() {
-  const [ state, setS ] = React.useState(data);
+  const [ state ] = React.useState(data);
 
   return (
     <div className='App-flex-container'>
