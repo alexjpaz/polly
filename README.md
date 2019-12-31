@@ -16,7 +16,7 @@ You can see a [demo](https://alexjpaz.github.io/polly) of the application with a
 
 The application leverages several [Web APIS](https://developer.mozilla.org/en-US/docs/Web/API):
 
-* [SpeechSythesis]https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis for text-to-speech functionality in a target language.
+* [SpeechSythesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis) for text-to-speech functionality in a target language.
 * [SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) for speech recognition to a target language.
 * [MediaRecorder](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder) for recording audio while speech recognition is taking place and audio playback.
 
