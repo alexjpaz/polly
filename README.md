@@ -10,4 +10,4 @@ When learning a language apps like [Duolingo](https://www.duolingo.com/) or [Mem
 
 ## Contributing
 
-##### [Developers Guide](..//wiki/Developers-Guide)
+##### [Developers Guide](../../wiki/Developers-Guide)
