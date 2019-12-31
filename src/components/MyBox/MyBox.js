@@ -46,7 +46,7 @@ function MyBox() {
 
   return (
     <Box mt={1}>
-      <Container>
+      <Container maxWidth="md">
         <Box mb={2}>
           <PhraseCard phrase={state.phrase} />
         </Box>
