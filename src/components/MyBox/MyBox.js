@@ -15,6 +15,7 @@ import Box from '@material-ui/core/Box';
 
 import PhraseCard from './PhraseCard'
 import RecitePhraseCard from './RecitePhraseCard'
+import ReciteFabButton from './ReciteFabButton';
 
 function MyBox() {
   const data = useContext(AppContext);
@@ -58,7 +59,7 @@ function MyBox() {
       <StickyFooterBox>
         <CenteredBox>
           <Box mb={2}>
-              {/*            <ReciteFabButton phrase={state.phrase.target } /> */}
+            <ReciteFabButton phrase={state.phrase} />
             </Box>
             <ButtonGroup aria-label="outlined navigation button group">
               <Button onClick={back}>Back</Button>

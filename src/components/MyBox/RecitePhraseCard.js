@@ -10,6 +10,8 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
 import ReciteButton from './ReciteButton';
 
+import ReciteContext from '../../ReciteContext';
+
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
@@ -43,13 +45,13 @@ function RecognitionText({ defaultText, recognition }) {
       setText("< No Match >");
     });
 
-    recognition.onresult = (e) => {
+    recognition.addEventListener('result', (e) => {
       if(!e.results) return;
 
       let { transcript, } = e.results[0][0];
 
       setText(transcript)
-    }
+    });
 
     return () => {
       recognition.onresult = function() {};
@@ -62,9 +64,13 @@ function RecognitionText({ defaultText, recognition }) {
 export default function RecitePhraseCard(props) {
   const classes = useStyles();
 
-  const [ recognition, setRecognition ] = React.useState(null);
-  const [ recordingState, setRecordingState ] = React.useState("stopped");
-  const [ audioUrl, setAudioUrl ] = React.useState(null);
+  const reciteContext = React.useContext(ReciteContext);
+
+  const { audioUrl } = reciteContext;
+
+  const { recognition } = reciteContext;
+
+  const { state: recordingState } = reciteContext;
 
   const playAudioUrl = (e) => {
     e.preventDefault();
@@ -74,98 +80,7 @@ export default function RecitePhraseCard(props) {
     audio.play();
   };
 
-  let mediaRecorder = null;
-
-  // FIXME: goofy javascript errors :/
-  const isRecording = () => recordingState !== "stopped";
-
-  const stopRecording = () => {
-    if(recognition) {
-      recognition.abort();
-    }
-
-    setRecordingState("stopped");
-    setRecognition(null);
-
-    if(mediaRecorder) {
-      mediaRecorder.stop();
-    }
-
-    return;
-  };
-
-  const record = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if(isRecording()) {
-      return stopRecording();
-    }
-
-    setRecordingState("listening");
-
-    if(navigator.mediaDevices) {
-      let chunks = [];
-      navigator.mediaDevices.getUserMedia({ audio: true })
-        .then(function(stream) {
-
-          mediaRecorder = new MediaRecorder(stream);
-
-          mediaRecorder.start();
-
-          mediaRecorder.onstart = function(e) {
-          };
-
-          mediaRecorder.onstop = function(e) {
-            setRecordingState("stopped");
-
-            var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
-            chunks = [];
-
-            var audioURL = URL.createObjectURL(blob);
-
-            var audio = new Audio();
-            audio.src = audioURL;
-            audio.play();
-
-            setAudioUrl(audioURL);
-          };
-
-          mediaRecorder.ondataavailable = function(e) {
-            chunks.push(e.data);
-          }
-        });
-    }
-
-    const recognition = new window.webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = props.phrase.targetLanguageCode; // TODO
-
-    recognition.onresult = (e) => {
-      console.log('soundresult', e);
-    }
-
-    recognition.onsoundstart = (e) => {
-      setRecordingState("recording");
-    };
-
-    recognition.onsoundend = (e) => {
-      recognition.stop();
-
-      if(mediaRecorder) {
-        mediaRecorder.stop();
-      }
-
-
-      setRecognition(null);
-    };
-
-    recognition.start();
-
-    setRecognition(recognition);
-  };
-
+  const record = () => reciteContext.record(props.phrase);
 
   const repeat = (e) => playAudioUrl(e);
 
