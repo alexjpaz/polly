@@ -1,4 +1,5 @@
 {
+    "name": "13 Sententces",
     "phrases": [
         {
             "sourceLanguageCode": "en-Us",
@@ -11,6 +12,78 @@
             "source": "It is John's apple",
             "targetLanguageCode": "es-Mx",
             "target": "Es la manzana de John"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I give John the apple",
+            "targetLanguageCode": "es-Mx",
+            "target": "Le doy la manzana a John"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "We give him the apple",
+            "targetLanguageCode": "es-Mx",
+            "target": "Le damos la manzana"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "He gives it to John",
+            "targetLanguageCode": "es-Mx",
+            "target": "Él se la da a John"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "She gives it to him",
+            "targetLanguageCode": "es-Mx",
+            "target": "Ella se la da"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I must give it to him",
+            "targetLanguageCode": "es-Mx",
+            "target": "Debo dársela a él"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I want to give it to her",
+            "targetLanguageCode": "es-Mx",
+            "target": "Quiero dársela (a ella)"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I’m going to buy it tomorrow",
+            "targetLanguageCode": "es-Mx",
+            "target": "Voy a comprarla mañana"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I can’t eat the apple",
+            "targetLanguageCode": "es-Mx",
+            "target": "No puedo comer la manzana"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I can’t eat the apple",
+            "targetLanguageCode": "es-Mx",
+            "target": "No puedo comer la manzana"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "I have eaten the apple",
+            "targetLanguageCode": "es-Mx",
+            "target": "Me he comido la manzana"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "Is the apple red?",
+            "targetLanguageCode": "es-Mx",
+            "target": "¿La manzana es roja?"
+        },
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "The apples are red",
+            "targetLanguageCode": "es-Mx",
+            "target": "Las manzanas son rojas"
         }
     ]
 }
