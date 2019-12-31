@@ -8,9 +8,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
-import UtteranceText from './UtteranceText';
-import RepeatSlowerButton from './RepeatSlowerButton';
-
 import ReciteButton from './ReciteButton';
 
 const useStyles = makeStyles({
@@ -152,7 +149,7 @@ export default function RecitePhraseCard(props) {
       <CardActions>
         <ReciteButton onClick={record} state={ recordingState } />
 
-        <Button size='small' variant={ audioUrl ? 'text' : 'disabled'} onClick={repeat}>
+        <Button size='small' disabled={ audioUrl } onClick={repeat}>
           <PlayCircleOutlineIcon />
         </Button>
       </CardActions>
