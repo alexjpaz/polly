@@ -37,7 +37,7 @@ export class DefaultReciteContextProvider extends React.Component {
     };
 
     const record = ({ targetLanguageCode }) => {
-      setRecognition("listening");
+      setRecordingState("listening");
 
 
       if(this.state.state !== "stopped") {
@@ -116,7 +116,7 @@ export class DefaultReciteContextProvider extends React.Component {
 
       recognition.start();
 
-      setRecognition("listening");
+      setRecordingState("listening");
 
       setRecognition(recognition);
 
