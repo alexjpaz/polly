@@ -149,7 +149,7 @@ export default function RecitePhraseCard(props) {
       <CardActions>
         <ReciteButton onClick={record} state={ recordingState } />
 
-        <Button size='small' disabled={ audioUrl } onClick={repeat}>
+        <Button size='small' disabled={ !audioUrl } onClick={repeat}>
           <PlayCircleOutlineIcon />
         </Button>
       </CardActions>
