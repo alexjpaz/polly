@@ -43,10 +43,6 @@ export default function TransitionsModal() {
     return () => {};
   });
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
     setOpen(false);
   };
