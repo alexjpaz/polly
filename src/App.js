@@ -1,25 +1,22 @@
 import React from 'react';
+
 import './App.css';
 
 import data from './datasources/foo.json';
 
-import GitHubLink from './components/GitHubLink';
-import MyBox from './components/MyBox/';
-
-export const AppContext = React.createContext({});
+import AppTheme from './AppTheme';
+import AppContext from './AppContext';
+import AppViewport from './components/layout/AppViewport';
 
 function App() {
   const [ state ] = React.useState(data);
 
   return (
-    <div className='App-flex-container'>
-      <div className='App'>
-        <AppContext.Provider value={state}>
-          <MyBox />
-        </AppContext.Provider>
-      </div>
-      <GitHubLink />
-    </div>
+    <AppTheme>
+      <AppContext.Provider value={state}>
+        <AppViewport />
+      </AppContext.Provider>
+    </AppTheme>
   );
 }
 

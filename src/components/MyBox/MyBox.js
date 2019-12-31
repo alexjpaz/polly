@@ -6,6 +6,12 @@ import './MyBox.css';
 
 import TargetPhrase from './TargetPhrase'
 
+export function BottomComponent() {
+  return (
+    <p>lol</p>
+  );
+}
+
 function MyBox() {
   const data = useContext(AppContext);
 

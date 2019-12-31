@@ -6,6 +6,8 @@ import UtteranceText from './UtteranceText';
 
 import EmojiAction from '../../elements/EmojiAction';
 
+import Button from '@material-ui/core/Button';
+
 function speakPhrase(phrase, extraArgs) {
   let lang = phrase.targetLanguageCode;
   let text = phrase.target;

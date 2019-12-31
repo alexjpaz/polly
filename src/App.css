@@ -1,26 +1,7 @@
 html, body {
-  height: 100%;  
-}
-
-.App {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-}
-
-.App-flex-container {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
+  background-color: rgba(0,0,0,0.5);
+  padding: 0;
+  margin: 0;
   height: 100%;
-  justify-content: center;
-  min-height: 100vh;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  width: 100%;
+};
