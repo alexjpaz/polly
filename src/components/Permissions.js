@@ -41,7 +41,7 @@ export default function TransitionsModal() {
     ;
 
     return () => {};
-  });
+  }, []);
 
   const handleClose = () => {
     setOpen(false);
