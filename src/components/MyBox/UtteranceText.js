@@ -5,7 +5,7 @@ function UtteranceText({ defaultText, utterance }) {
 
   React.useEffect(() => {
     if(utterance) {
-      utterance.onboundary = function(ev) {
+      utterance.addEventListener('boundary', function(ev) {
         let { charIndex, charLength } = ev;
 
         let before = utterance.text.substring(0, charIndex);
@@ -21,7 +21,7 @@ function UtteranceText({ defaultText, utterance }) {
             <span>{after}</span>
           </span>
         );
-      }
+      });
 
       utterance.addEventListener('end', () => {
         setText(defaultText);
