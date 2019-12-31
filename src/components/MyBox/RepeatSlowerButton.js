@@ -5,8 +5,9 @@ import SlowMotionVideoIcon from '@material-ui/icons/SlowMotionVideo';
 
 export default function RepeatSlowerButton(props) {
   return (
-    <Button size="small" variant="contained" {...props}>
+    <Button {...props}>
       <SlowMotionVideoIcon />
+      { props.children }
     </Button>
   );
 }

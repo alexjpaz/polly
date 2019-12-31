@@ -1,10 +1,7 @@
 import React from 'react';
 
-import LargeText from '../../elements/LargeText';
-
 function UtteranceText({ defaultText, utterance }) {
   const [text, setText] = React.useState(defaultText);
-  console.log(defaultText, text);
 
   React.useEffect(() => {
     if(utterance) {
@@ -37,9 +34,7 @@ function UtteranceText({ defaultText, utterance }) {
     };
   });
 
-  return (
-    <LargeText>{text}</LargeText>
-  );
+  return (<React.Fragment>{text}</React.Fragment>);
 }
 
 export default UtteranceText;

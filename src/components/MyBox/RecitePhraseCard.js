@@ -1,16 +1,37 @@
 import React from 'react';
 
-import './TargetPhrase.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
 import UtteranceText from './UtteranceText';
-
-import CenteredContainer from '../../elements/CenteredContainer';
-
 import RepeatSlowerButton from './RepeatSlowerButton';
+
 import ReciteButton from './ReciteButton';
 
-function RecognitionText({ recognition }) {
-  const [text, setText] = React.useState(null);
+const useStyles = makeStyles({
+  card: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
+
+function RecognitionText({ defaultText, recognition }) {
+  const [text, setText] = React.useState(defaultText);
 
   React.useEffect(() => {
     if(!recognition) {
@@ -22,7 +43,7 @@ function RecognitionText({ recognition }) {
 
       let { transcript, } = e.results[0][0];
 
-      setText(<div><h1>{transcript}</h1></div>)
+      setText(transcript)
     }
 
     return () => {
@@ -33,9 +54,11 @@ function RecognitionText({ recognition }) {
   return (text);
 }
 
-function TargetPhrase({ phrase }) {
-  const [ utterance, setUtterance ] = React.useState(null);
+export default function RecitePhraseCard(props) {
+  const classes = useStyles();
+
   const [ recognition, setRecognition ] = React.useState(null);
+  const [ recordingState, setRecordingState ] = React.useState("stopped");
   const [ audioUrl, setAudioUrl ] = React.useState(null);
 
   const playAudioUrl = (e) => {
@@ -50,6 +73,8 @@ function TargetPhrase({ phrase }) {
     e.preventDefault();
     e.stopPropagation();
 
+    setRecordingState("listening");
+
     let mediaRecorder = null;
 
     if(navigator.mediaDevices) {
@@ -61,7 +86,12 @@ function TargetPhrase({ phrase }) {
 
           mediaRecorder.start();
 
+          mediaRecorder.onstart = function(e) {
+          };
+
           mediaRecorder.onstop = function(e) {
+            setRecordingState("stopped");
+
             var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
             chunks = [];
 
@@ -83,13 +113,14 @@ function TargetPhrase({ phrase }) {
     const recognition = new window.webkitSpeechRecognition();
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = phrase.targetLanguageCode; // TODO
+    recognition.lang = props.phrase.targetLanguageCode; // TODO
 
     recognition.onresult = (e) => {
       console.log('soundresult', e);
     }
 
     recognition.onsoundstart = (e) => {
+      setRecordingState("recording");
     };
 
     recognition.onsoundend = (e) => {
@@ -105,19 +136,26 @@ function TargetPhrase({ phrase }) {
     setRecognition(recognition);
   };
 
-  return (
-    <div className='TargetPhrase'>
-      <CenteredContainer>
-        <div onClick={playAudioUrl}>
-          <RecognitionText recognition={recognition} />
-        </div>
-      </CenteredContainer>
 
-      <CenteredContainer>
-        <ReciteButton onClick={record} />
-      </CenteredContainer>
-    </div>
+  const repeat = (e) => playAudioUrl(e);
+
+  return (
+    <Card variant="outlined" className={classes.card}>
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+            Recite the phrase
+       </Typography>
+        <Typography variant="h4" component="h2" onClick={repeat}>
+            <RecognitionText defaultText={props.phrase.target} recognition={recognition} />
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <ReciteButton onClick={record} state={ recordingState } />
+
+        <Button size='small' variant={ audioUrl ? 'text' : 'disabled'} onClick={repeat}>
+          <PlayCircleOutlineIcon />
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
-
-export default TargetPhrase;

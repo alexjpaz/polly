@@ -4,10 +4,18 @@ import AppContext from '../../AppContext';
 
 import './MyBox.css';
 
+import CenteredContainer from '../../elements/CenteredContainer';
+import StickyFooterBox from '../../elements/StickyFooterBox';
+
 import TargetPhrase from './TargetPhrase'
 
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Box from '@material-ui/core/Box';
+
+import PhraseCard from './PhraseCard'
+import RecitePhraseCard from './RecitePhraseCard'
+import ReciteFabButton from './ReciteFabButton';
 
 function MyBox() {
   const data = useContext(AppContext);
@@ -34,14 +42,26 @@ function MyBox() {
   const next = iterate(+1);
 
   return (
-    <div className='MyBox'>
-      <TargetPhrase phrase={state.phrase} />
+    <Box mt={1}>
+      <Box mb={2}>
+        <PhraseCard phrase={state.phrase} />
+      </Box>
+      <Box mb={2}>
+        <RecitePhraseCard phrase={state.phrase} />
+      </Box>
 
-      <ButtonGroup aria-label="outlined navigation button group">
-        <Button onClick={back}>Back</Button>
-        <Button onClick={next}>Next</Button>
-      </ButtonGroup>
-    </div>
+      <StickyFooterBox>
+        <CenteredContainer>
+          <Box mb={2}>
+            <ReciteFabButton phrase={state.phrase.target } />
+          </Box>
+          <ButtonGroup aria-label="outlined navigation button group">
+            <Button onClick={back}>Back</Button>
+            <Button onClick={next}>Next</Button>
+          </ButtonGroup>
+        </CenteredContainer>
+      </StickyFooterBox>
+    </Box>
   );
 }
 
