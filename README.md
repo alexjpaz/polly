@@ -10,7 +10,7 @@ When learning a language apps like [Duolingo](https://www.duolingo.com/) or [Mem
 
 ## Where
 
-You can see a [demo](https://alexjpaz-playground.github.io/polly) of the application with a deck of the ["13 Sentences You Need To Know"](https://www.realfastspanish.com/grammar/13-sentences-need-know-guide-spanish-grammar-hacking) (inspired by [Tim Ferris](https://tim.blog/2007/11/07/how-to-learn-but-not-master-any-language-in-1-hour-plus-a-favor/). It is also a [progressive web application](https://developers.google.com/web/progressive-web-apps) so you can add this to your home screen to get a native app feel.
+You can see a [demo](https://alexjpaz-playground.github.io/polly) of the application with a deck of the ["13 Sentences You Need To Know"](https://www.realfastspanish.com/grammar/13-sentences-need-know-guide-spanish-grammar-hacking) (inspired by [Tim Ferris](https://tim.blog/2007/11/07/how-to-learn-but-not-master-any-language-in-1-hour-plus-a-favor/)). It is also a [progressive web application](https://developers.google.com/web/progressive-web-apps) so you can add this to your home screen to get a native app feel.
 
 ### Contributing
 
