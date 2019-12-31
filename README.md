@@ -8,7 +8,7 @@
 
 ## Why
 
-When learning a language apps like [Duolingo](https://www.duolingo.com/) or [Memrise](https://www.memrise.com/) are valuable tools to building vocubulrary and grammar. **Polly** takes one aspect of these tools, *reciting a phrase*, and allows a user to practice a phrase as many times as they want until they feel comfortable using it with a native speaker for further training.
+When learning a language apps like [Duolingo](https://www.duolingo.com/) or [Memrise](https://www.memrise.com/) are valuable tools for building vocubulrary and grammar. **Polly** takes one aspect of these tools, *reciting a phrase*, and allows a user to practice a phrase as many times as they want until they feel comfortable using it with a native speaker for further training.
 
 ## Where
 
