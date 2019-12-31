@@ -37,6 +37,11 @@ export class DefaultReciteContextProvider extends React.Component {
     };
 
     const record = ({ targetLanguageCode }) => {
+      console.log('record', targetLanguageCode);
+
+      setRecognition("listening");
+
+
       if(this.state.state !== "stopped") {
         let { recognition } = this.state;
 
@@ -92,10 +97,6 @@ export class DefaultReciteContextProvider extends React.Component {
       recognition.interimResults = false;
       recognition.lang = targetLanguageCode;
 
-      recognition.onresult = (e) => {
-        console.log('soundresult', e);
-      }
-
       recognition.addEventListener('audiostart', () => {
         setRecordingState("listening");
       });
@@ -104,7 +105,7 @@ export class DefaultReciteContextProvider extends React.Component {
         setRecordingState("recording");
       });
 
-      recognition.onsoundend = (e) => {
+      recognition.addEventListener('soundend', (e) => {
         recognition.stop();
 
         if(mediaRecorder) {
@@ -113,9 +114,11 @@ export class DefaultReciteContextProvider extends React.Component {
 
 
         setRecognition(null);
-      };
+      });
 
       recognition.start();
+
+      setRecognition("listening");
 
       setRecognition(recognition);
 

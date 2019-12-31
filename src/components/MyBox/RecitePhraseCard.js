@@ -45,13 +45,13 @@ function RecognitionText({ defaultText, recognition }) {
       setText("< No Match >");
     });
 
-    recognition.onresult = (e) => {
+    recognition.addEventListener('result', (e) => {
       if(!e.results) return;
 
       let { transcript, } = e.results[0][0];
 
       setText(transcript)
-    }
+    });
 
     return () => {
       recognition.onresult = function() {};

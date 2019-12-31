@@ -13,9 +13,6 @@ import AppViewport from './components/layout/AppViewport';
 
 function App() {
   const [ state ] = React.useState(Object.assign({
-    record: () => {
-      console.log(123);
-    }
   }, data));
 
   return (
