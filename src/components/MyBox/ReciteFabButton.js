@@ -4,33 +4,31 @@ import Fab from '@material-ui/core/Fab';
 import Mic from '@material-ui/icons/Mic';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 
-import AppContext from '../../AppContext';
+import ReciteContext from '../../ReciteContext';
 
 export default function ReciteFabButton(props) {
 
-  let appContext = React.useContext(AppContext);
+  let appContext = React.useContext(ReciteContext);
 
   let icon = <Mic />;
   let text = "Recite";
 
-  if(props.state === "listening") {
+  if(appContext.state === "listening") {
+    icon = <RecordVoiceOverIcon />
+    text = "Listening";
+  }
+
+  if(appContext.state === "recording") {
     icon = <RecordVoiceOverIcon />
     text = "Recording";
   }
 
-  if(props.state === "recording") {
-    icon = <RecordVoiceOverIcon />
-    text = "Recording";
-  }
-
-  const record = () => {
-    appContext.record();
-  };
+  const record = () => appContext.record(props.phrase);
 
   return (
     <Fab variant="extended" {...props}  color="secondary" onClick={record}>
-      <Mic />
-      Recite
+        { icon }
+        { text }
     </Fab>
   );
 }

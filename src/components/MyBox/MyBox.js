@@ -59,7 +59,7 @@ function MyBox() {
       <StickyFooterBox>
         <CenteredBox>
           <Box mb={2}>
-            <ReciteFabButton phrase={state.phrase.target } />
+            <ReciteFabButton phrase={state.phrase} />
             </Box>
             <ButtonGroup aria-label="outlined navigation button group">
               <Button onClick={back}>Back</Button>

@@ -5,7 +5,10 @@ import './App.css';
 import data from './datasources/foo.json';
 
 import AppTheme from './AppTheme';
+
+import { DefaultReciteContextProvider } from './ReciteContext';
 import AppContext from './AppContext';
+
 import AppViewport from './components/layout/AppViewport';
 
 function App() {
@@ -18,7 +21,9 @@ function App() {
   return (
     <AppTheme>
       <AppContext.Provider value={state}>
-        <AppViewport />
+        <DefaultReciteContextProvider>
+          <AppViewport />
+        </DefaultReciteContextProvider>
       </AppContext.Provider>
     </AppTheme>
   );
