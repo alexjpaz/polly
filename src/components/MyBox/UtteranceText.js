@@ -23,16 +23,19 @@ function UtteranceText({ defaultText, utterance }) {
         );
       }
 
-      utterance.onend = function(ev) {
+      utterance.addEventListener('end', () => {
         setText(defaultText);
-      }
+      });
+    } else {
+      setText(defaultText);
     }
+
     return () => {
       if(utterance) {
         utterance.onboundary = function() {};
       }
     };
-  });
+  }, [utterance, defaultText]);
 
   return (<React.Fragment>{text}</React.Fragment>);
 }

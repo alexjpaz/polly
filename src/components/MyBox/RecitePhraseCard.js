@@ -28,12 +28,20 @@ const useStyles = makeStyles({
 });
 
 function RecognitionText({ defaultText, recognition }) {
-  const [text, setText] = React.useState(defaultText);
+  const [text, setText] = React.useState("...");
 
   React.useEffect(() => {
     if(!recognition) {
       return () => {};
     }
+
+    recognition.addEventListener('audiostart', (e) => {
+      setText("...");
+    });
+
+    recognition.addEventListener('nomatch', (e) => {
+      setText("< No Match >");
+    });
 
     recognition.onresult = (e) => {
       if(!e.results) return;
@@ -66,13 +74,35 @@ export default function RecitePhraseCard(props) {
     audio.play();
   };
 
+  let mediaRecorder = null;
+
+  // FIXME: goofy javascript errors :/
+  const isRecording = () => recordingState !== "stopped";
+
+  const stopRecording = () => {
+    if(recognition) {
+      recognition.abort();
+    }
+
+    setRecordingState("stopped");
+    setRecognition(null);
+
+    if(mediaRecorder) {
+      mediaRecorder.stop();
+    }
+
+    return;
+  };
+
   const record = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    setRecordingState("listening");
+    if(isRecording()) {
+      return stopRecording();
+    }
 
-    let mediaRecorder = null;
+    setRecordingState("listening");
 
     if(navigator.mediaDevices) {
       let chunks = [];
@@ -126,6 +156,9 @@ export default function RecitePhraseCard(props) {
       if(mediaRecorder) {
         mediaRecorder.stop();
       }
+
+
+      setRecognition(null);
     };
 
     recognition.start();

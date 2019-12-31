@@ -11,7 +11,6 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import UtteranceText from './UtteranceText';
 import RepeatSlowerButton from './RepeatSlowerButton';
 
-
 function speakPhrase(phrase, extraArgs) {
   let lang = phrase.targetLanguageCode;
   let text = phrase.target;
@@ -64,6 +63,10 @@ export default function PhraseCard(props) {
     e.stopPropagation();
 
     let ut = speakPhrase(props.phrase, args);
+
+    ut.addEventListener('end', () => {
+      setUtterance(null);
+    });
 
     setUtterance(ut);
   };
