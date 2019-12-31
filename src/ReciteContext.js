@@ -37,8 +37,6 @@ export class DefaultReciteContextProvider extends React.Component {
     };
 
     const record = ({ targetLanguageCode }) => {
-      console.log('record', targetLanguageCode);
-
       setRecognition("listening");
 
 
