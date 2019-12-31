@@ -4,9 +4,10 @@ import './TargetPhrase.css';
 
 import UtteranceText from './UtteranceText';
 
-import EmojiAction from '../../elements/EmojiAction';
+import CenteredContainer from '../../elements/CenteredContainer';
 
-import Button from '@material-ui/core/Button';
+import RepeatSlowerButton from './RepeatSlowerButton';
+import ReciteButton from './ReciteButton';
 
 function speakPhrase(phrase, extraArgs) {
   let lang = phrase.targetLanguageCode;
@@ -145,19 +146,23 @@ function TargetPhrase({ phrase }) {
 
   return (
     <div className='TargetPhrase' onClick={click()}>
-      <UtteranceText defaultText={phrase.target} utterance={utterance} />
+      <CenteredContainer>
+        <SourceText>{ phrase.source }</SourceText>
 
-      <div onClick={playAudioUrl}>
-        <RecognitionText recognition={recognition} />
-      </div>
+        <UtteranceText defaultText={phrase.target} utterance={utterance} />
 
-      <SourceText>{ phrase.source }</SourceText>
+        <div onClick={playAudioUrl}>
+          <RecognitionText recognition={recognition} />
+        </div>
+      </CenteredContainer>
 
-      <br />
 
-      <EmojiAction emoji='🐢' label='slower' action={click({ rate: 0.5 })} />
+      <RepeatSlowerButton onClick={click({ rate: 0.5 })} />
 
-      <EmojiAction emoji='🎤' label='record' action={e => record(e)} />
+
+      <CenteredContainer>
+        <ReciteButton onClick={record} />
+      </CenteredContainer>
     </div>
   );
 }
