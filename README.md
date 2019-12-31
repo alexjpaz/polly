@@ -3,6 +3,8 @@
 > Polyglot language learning tools 
 
 [![Build Status](https://travis-ci.org/alexjpaz/polly.svg?branch=master)](https://travis-ci.org/alexjpaz/polly)
+[![Demo](https://img.shields.io/badge/%F0%9F%A6%9C-demo-green?&style=flat)](https://alexjpaz.github.io/polly)
+
 
 ## Why
 
