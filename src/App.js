@@ -9,7 +9,11 @@ import AppContext from './AppContext';
 import AppViewport from './components/layout/AppViewport';
 
 function App() {
-  const [ state ] = React.useState(data);
+  const [ state ] = React.useState(Object.assign({
+    record: () => {
+      console.log(123);
+    }
+  }, data));
 
   return (
     <AppTheme>

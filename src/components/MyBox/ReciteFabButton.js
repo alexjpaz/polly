@@ -7,6 +7,9 @@ import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import AppContext from '../../AppContext';
 
 export default function ReciteFabButton(props) {
+
+  let appContext = React.useContext(AppContext);
+
   let icon = <Mic />;
   let text = "Recite";
 
@@ -20,8 +23,12 @@ export default function ReciteFabButton(props) {
     text = "Recording";
   }
 
+  const record = () => {
+    appContext.record();
+  };
+
   return (
-    <Fab variant="extended" {...props}  color="secondary">
+    <Fab variant="extended" {...props}  color="secondary" onClick={record}>
       <Mic />
       Recite
     </Fab>
