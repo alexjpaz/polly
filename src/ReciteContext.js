@@ -82,6 +82,10 @@ export class DefaultReciteContextProvider extends React.Component {
               audio.play();
 
               setAudioUrl(audioURL);
+
+              stream.getTracks().forEach(function(track) {
+                track.stop();
+              });
             };
 
             mediaRecorder.ondataavailable = function(e) {
@@ -109,7 +113,6 @@ export class DefaultReciteContextProvider extends React.Component {
         if(mediaRecorder) {
           mediaRecorder.stop();
         }
-
 
         setRecognition(null);
       });

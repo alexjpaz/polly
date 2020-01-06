@@ -32,8 +32,12 @@ export default function TransitionsModal() {
     }
 
     navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(() => {
+      .then((stream) => {
         setOpen(false);
+
+        stream.getTracks().forEach(function(track) {
+          track.stop();
+        });
       })
       .catch(() => {
         setOpen(true);
