@@ -114,6 +114,16 @@ export class DefaultReciteContextProvider extends React.Component {
         setRecognition(null);
       });
 
+      document.addEventListener("visibilitychange", () => {
+        if(document.hidden) {
+          recognition.abort();
+
+          if(mediaRecorder) {
+            mediaRecorder.stop();
+          }
+        }
+      });
+
       recognition.start();
 
       setRecordingState("listening");
