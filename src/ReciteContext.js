@@ -121,7 +121,7 @@ export class DefaultReciteContextProvider extends React.Component {
         if(document.hidden) {
           recognition.abort();
 
-          if(mediaRecorder) {
+          if(mediaRecorder && mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
           }
         }
