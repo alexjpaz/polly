@@ -31,18 +31,18 @@ export default function TransitionsModal() {
       return;
     }
 
-    //navigator.mediaDevices.getUserMedia({ audio: true })
-      //.then((stream) => {
-        //setOpen(false);
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then((stream) => {
+        setOpen(false);
 
-        //stream.getTracks().forEach(function(track) {
-          //track.stop();
-        //});
-      //})
-      //.catch(() => {
-        //setOpen(true);
-      //})
-    //;
+        stream.getTracks().forEach(function(track) {
+          track.stop();
+        });
+      })
+      .catch(() => {
+        setOpen(true);
+      })
+    ;
 
     return () => {};
   }, []);
