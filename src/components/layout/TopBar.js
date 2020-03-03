@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import PollyImage from '../../logo192.png';
 import GitHubLink from '../GitHubLink';
 
+import LoadWorkbookLink from '../Workbook/LoadWorkbookLink';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -39,6 +41,7 @@ export default function TopBar() {
           <Typography variant="h6" className={classes.title}>
               Polly
           </Typography>
+          <LoadWorkbookLink />
           <GitHubLink />
         </Toolbar>
       </AppBar>
