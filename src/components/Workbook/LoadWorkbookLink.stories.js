@@ -12,13 +12,22 @@ const useStyles = makeStyles({
   }
 });
 
+export function JustTheButton() {
+  const styles = useStyles();
+  const value = {
+  };
+  return (
+    <AppContext.Provider value={value}>
+      <Box className={styles.root}>
+        <LoadWorkbookLink />
+      </Box>
+      <h1>{JSON.stringify(value)}</h1>
+    </AppContext.Provider>
+  )
+};
+
 export default {
   title: 'components/Workbook/LoadWorkbookLink',
 };
 
-export const Fzoo = () => (
-  <Box className={useStyles().root}>
-    <LoadWorkbookLink />
-  </Box>
-);
 

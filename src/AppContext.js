@@ -2,6 +2,7 @@ import React from 'react';
 
 export const defaultValue = {
   name: "unknown",
+  workbookLoaderDialogIsOpen: false,
   setWorkbookData: () => { console.log("Not implemented!"); },
   phrases: [],
 };

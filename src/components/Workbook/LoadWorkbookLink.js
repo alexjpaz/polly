@@ -1,13 +1,18 @@
 import React from 'react';
 
+import { AppContext } from '../../AppContext';
+
 import IconButton from '@material-ui/core/IconButton';
 
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 
 export const LoadWorkbookLink = () => {
-  const onClick = () => {
-    alert(1);
-  };
+  const ctx = React.useContext(AppContext);
+
+  const onClick = React.useEffect(() => {
+    console.log(ctx)
+    ctx.workbookLoaderDialogIsOpen = true;
+  });
 
   return (
     <IconButton onClick={onClick}>
