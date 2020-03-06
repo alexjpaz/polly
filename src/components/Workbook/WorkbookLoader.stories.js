@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Box from '@material-ui/core/Box';
 import { AppContext } from '../../AppContext';
 import WorkbookLoader from './WorkbookLoader';
 
@@ -11,7 +12,9 @@ export default {
 
 export const foo = () => (
   <AppContext.Provider value={data}>
-    <WorkbookLoader />
+    <Box color="text.primary">
+      <WorkbookLoader />
+    </Box>
   </AppContext.Provider>
 );
 
