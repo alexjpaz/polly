@@ -48,5 +48,7 @@ test('dialog loads a file', async ( ) => {
 
   fireEvent.click(loadButton);
 
-  await wait(() => expect(ctx.setWorkbookData).toHaveBeenCalled());
-});
+  await wait(() => expect(ctx.setWorkbookData).toHaveBeenCalled(), {
+    timeout: 14500
+  });
+}, 15000);
