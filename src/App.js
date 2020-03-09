@@ -2,26 +2,22 @@ import React from 'react';
 
 import './App.css';
 
-import data from './datasources/foo.json';
 
 import AppTheme from './AppTheme';
 
 import { DefaultReciteContextProvider } from './ReciteContext';
-import AppContext from './AppContext';
+import { DefaultAppContextProvider } from './AppContext';
 
 import AppViewport from './components/layout/AppViewport';
 
 function App() {
-  const [ state ] = React.useState(Object.assign({
-  }, data));
-
   return (
     <AppTheme>
-      <AppContext.Provider value={state}>
+      <DefaultAppContextProvider>
         <DefaultReciteContextProvider>
           <AppViewport />
         </DefaultReciteContextProvider>
-      </AppContext.Provider>
+      </DefaultAppContextProvider>
     </AppTheme>
   );
 }
