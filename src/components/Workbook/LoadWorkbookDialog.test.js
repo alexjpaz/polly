@@ -10,7 +10,7 @@ test('renders', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-xtest('dialog loads a file', async ( ) => {
+test('dialog loads a file', async ( ) => {
   const onClose = jest.fn();
 
   const ctx = {
