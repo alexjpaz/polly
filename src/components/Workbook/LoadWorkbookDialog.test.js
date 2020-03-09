@@ -49,8 +49,5 @@ test('renders learn react link', async ( ) => {
 
   fireEvent.click(loadButton);
 
-  // ugh
-  await new Promise(r => setTimeout(r, 200));
-
-  expect(ctx.setWorkbookData).toHaveBeenCalledWith(fakeContent);
+  expect(ctx.setWorkbookData).toHaveBeenCalled();
 });

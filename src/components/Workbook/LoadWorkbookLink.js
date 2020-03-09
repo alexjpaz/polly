@@ -10,7 +10,6 @@ export const LoadWorkbookLink = () => {
   const ctx = React.useContext(AppContext);
 
   const onClick = React.useEffect(() => {
-    console.log(ctx)
     ctx.workbookLoaderDialogIsOpen = true;
   });
 
