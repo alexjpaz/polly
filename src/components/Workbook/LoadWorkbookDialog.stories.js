@@ -12,7 +12,7 @@ export function JustTheDialog() {
 
   return (
     <AppContext.Provider value={ctx}>
-        <LoadWorkbookDialog />
+        <LoadWorkbookDialog isOpen={true} onClose={action("closed")} />
     </AppContext.Provider>
   )
 };

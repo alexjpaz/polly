@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { action } from '@storybook/addon-actions';
+
 import { AppContext } from '../../AppContext';
 import LoadWorkbookLink from './LoadWorkbookLink';
 
@@ -14,14 +16,16 @@ const useStyles = makeStyles({
 
 export function JustTheButton() {
   const styles = useStyles();
+
   const value = {
+    setWorkbookData: action('setWorkbookData')
   };
+
   return (
     <AppContext.Provider value={value}>
       <Box className={styles.root}>
         <LoadWorkbookLink />
       </Box>
-      <h1>{JSON.stringify(value)}</h1>
     </AppContext.Provider>
   )
 };

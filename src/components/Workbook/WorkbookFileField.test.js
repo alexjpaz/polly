@@ -16,7 +16,8 @@ test('renders', async () => {
   expect(fileElement).toBeInTheDocument();
 
   const fakeContent = {
-    "foo": "bar"
+    "name": "example",
+    "phrases": []
   };
 
   const fakeFile = new File([JSON.stringify(fakeContent)], "foo.txt", {

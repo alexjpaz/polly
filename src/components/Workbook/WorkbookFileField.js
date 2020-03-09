@@ -21,14 +21,18 @@ export const WorkbookFileField = ({ onClose = NOOP }) => {
   const onChange = async (e) => {
     const f = e.target.files[0];
 
-    const data = await WorkbookService.loadFromFile(f);
+    try {
+      const data = await WorkbookService.loadFromFile(f);
 
-    setData({
-      ...data,
-      fileLoaded: true
-    });
+      setData({
+        ...data,
+        fileLoaded: true
+      });
 
-    onClose(data);
+      onClose(data);
+    } catch(e) {
+      window.alert("Invalid workbook:" + e.message);
+    }
   };
 
   return (

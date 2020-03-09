@@ -1,0 +1,11 @@
+{
+    "name": "example",
+    "phrases": [
+        {
+            "sourceLanguageCode": "en-Us",
+            "source": "The apple is red",
+            "targetLanguageCode": "es-Mx",
+            "target": "La manzana es roja"
+        }
+    ]
+}

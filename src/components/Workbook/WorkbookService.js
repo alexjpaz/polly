@@ -1,4 +1,9 @@
 export class WorkbookService {
+  static validateWorkbook(data) {
+    if(!data.phrases) {
+      throw new Error("Workbook does not have any valid phrases");
+    }
+  }
 
   static async loadFromFile(file) {
     return new Promise((res, rej) => {
@@ -8,6 +13,8 @@ export class WorkbookService {
         try {
           const text = e.target.result;
           const json = JSON.parse(text);
+
+          WorkbookService.validateWorkbook(json);
 
           return res(json);
         } catch(e) {

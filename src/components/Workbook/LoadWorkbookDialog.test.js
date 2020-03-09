@@ -1,29 +1,25 @@
 import React from 'react';
-import { render, fireEvent, act } from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
 
 import { AppContext } from '../../AppContext';
 import LoadWorkbookDialog from './LoadWorkbookDialog';
 
 test('renders', () => {
-  const { getByText } = render(<LoadWorkbookDialog />);
+  const { getByText } = render(<LoadWorkbookDialog isOpen={true} />);
   const linkElement = getByText(/Load Workbook/i);
   expect(linkElement).toBeInTheDocument();
 });
 
-test('renders', () => {
-  const { getByText } = render(<LoadWorkbookDialog />);
-  const linkElement = getByText(/Load Workbook/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('dialog loads a file', async ( ) => {
+  const onClose = jest.fn();
 
-test('renders learn react link', async ( ) => {
   const ctx = {
     setWorkbookData: jest.fn()
   };
 
   const { getByTestId } = render(
     <AppContext.Provider value={ctx}>
-      <LoadWorkbookDialog />
+      <LoadWorkbookDialog isOpen={true} onClose={onClose} />
     </AppContext.Provider>
   );
 
@@ -31,11 +27,12 @@ test('renders learn react link', async ( ) => {
   expect(fileElement).toBeInTheDocument();
 
   const fakeContent = {
-    "foo": "bar"
+    "name": "example",
+    "phrases": []
   };
 
-  const fakeFile = new File([JSON.stringify(fakeContent)], "foo.txt", {
-    type: "text/plain",
+  const fakeFile = new File([JSON.stringify(fakeContent)], "foo.json", {
+    type: "application/json",
   });
 
   fireEvent.change(fileElement, {
@@ -47,7 +44,9 @@ test('renders learn react link', async ( ) => {
   const loadButton = getByTestId("load");
   expect(loadButton).toBeInTheDocument();
 
+  await wait(() => expect(loadButton.disabled).toEqual(true));
+
   fireEvent.click(loadButton);
 
-  expect(ctx.setWorkbookData).toHaveBeenCalled();
+  await wait(() => expect(ctx.setWorkbookData).toHaveBeenCalled());
 });

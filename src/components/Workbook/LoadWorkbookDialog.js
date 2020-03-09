@@ -9,33 +9,37 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { AppContext } from '../../AppContext';
 import { WorkbookFileField } from './WorkbookFileField';
 
-export default function FormDialog({ isOpen }) {
+export default function LoadWorkbookDialog({ isOpen = false, onClose }) {
   const ctx = React.useContext(AppContext);
 
-  const [data, setData] = React.useState({});
+  const [ workbookData , setWorkbookData ] = React.useState(null);
 
-  const [open, setOpen] = React.useState(true);
+  const handleClose = (e) => {
+    e.stopPropagation();
+    ctx.setWorkbookData(workbookData);
+    onClose();
+  };
 
-  const handleClose = () => {
-    ctx.setWorkbookData(data);
-    setOpen(false);
+  const handleCancel = (e) => {
+    e.stopPropagation();
+    onClose();
   };
 
   return (
     <React.Fragment>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Load Workbook</DialogTitle>
+      <Dialog open={isOpen} onClose={handleCancel} aria-labelledby="form-dialog-title">
+        <DialogTitle id="load-workbook-dialog">Load Workbook</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Please specify a source for your workbook.
           </DialogContentText>
-          <WorkbookFileField onClose={setData}/>
+          <WorkbookFileField onClose={setWorkbookData}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="default">
+          <Button onClick={handleCancel} color="default" data-testid="canel" >
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary" data-testid="load">
+          <Button onClick={handleClose} disabled={!workbookData} color="primary" data-testid="load">
             Load
           </Button>
         </DialogActions>
