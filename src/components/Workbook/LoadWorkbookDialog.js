@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { AppContext } from '../../AppContext';
 import { WorkbookFileField } from './WorkbookFileField';
 
-export default function LoadWorkbookDialog({ isOpen = false, onClose }) {
+export function LoadWorkbookDialog({ isOpen = false, onClose }) {
   const ctx = React.useContext(AppContext);
 
   const [ workbookData , setWorkbookData ] = React.useState(null);
@@ -36,7 +36,7 @@ export default function LoadWorkbookDialog({ isOpen = false, onClose }) {
           <WorkbookFileField onClose={setWorkbookData}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancel} color="default" data-testid="canel" >
+          <Button onClick={handleCancel} color="default" data-testid="cancel" >
             Cancel
           </Button>
           <Button onClick={handleClose} disabled={!workbookData} color="primary" data-testid="load">
@@ -45,5 +45,13 @@ export default function LoadWorkbookDialog({ isOpen = false, onClose }) {
         </DialogActions>
       </Dialog>
     </React.Fragment>
+  );
+}
+
+export default function DefaultLoadWorkbookDialog({ isOpen = false, onClose, children }) {
+  return (
+    <LoadWorkbookDialog isOpen={isOpen} onClose={onClose}>
+      {children}
+    </LoadWorkbookDialog>
   );
 }

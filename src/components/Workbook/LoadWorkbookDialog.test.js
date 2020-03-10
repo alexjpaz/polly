@@ -10,45 +10,47 @@ test('renders', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-test('dialog loads a file', async ( ) => {
-  const onClose = jest.fn();
+describe('dialog', () => {
+  let getByTestId;
+  let onClose;
+  let ctx;
 
-  const ctx = {
-    setWorkbookData: jest.fn()
-  };
+  beforeEach(() => {
+    onClose = jest.fn();
 
-  const { getByTestId } = render(
-    <AppContext.Provider value={ctx}>
-      <LoadWorkbookDialog isOpen={true} onClose={onClose} />
-    </AppContext.Provider>
-  );
+    ctx = {
+      setWorkbookData: jest.fn()
+    };
 
-  const fileElement = getByTestId("file");
-  expect(fileElement).toBeInTheDocument();
-
-  const fakeContent = {
-    "name": "example",
-    "phrases": []
-  };
-
-  const fakeFile = new File([JSON.stringify(fakeContent)], "foo.json", {
-    type: "application/json",
+    ({ getByTestId } = render(
+      <AppContext.Provider value={ctx}>
+        <LoadWorkbookDialog isOpen={true} onClose={onClose} />
+      </AppContext.Provider>
+    ));
   });
 
-  fireEvent.change(fileElement, {
-    target: {
-      files: [fakeFile]
-    }
+  it('has a file element', () => {
+    const fileElement = getByTestId("file");
+    expect(fileElement).toBeInTheDocument();
   });
 
-  const loadButton = getByTestId("load");
-  expect(loadButton).toBeInTheDocument();
+  it('has a load button', () => {
+    const element = getByTestId("load");
+    expect(element).toBeInTheDocument();
+  });
 
-  //await wait(() => expect(loadButton.disabled).toEqual(true));
+  it('has a cancel button', () => {
+    const element = getByTestId("cancel");
+    expect(element).toBeInTheDocument();
 
-  //fireEvent.click(loadButton);
+  });
 
-  //await wait(() => expect(ctx.setWorkbookData).toHaveBeenCalled(), {
-    //timeout: 14500
-  //});
-}, 15000);
+  it('cancel button clears the modal', () => {
+    const element = getByTestId("cancel");
+    expect(element).toBeInTheDocument();
+
+    fireEvent.click(element);
+
+    expect(onClose).toHaveBeenCalled();
+  });
+});
