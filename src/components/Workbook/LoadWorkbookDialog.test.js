@@ -33,24 +33,4 @@ describe('dialog', () => {
     const fileElement = getByTestId("file");
     expect(fileElement).toBeInTheDocument();
   });
-
-  it('has a load button', () => {
-    const element = getByTestId("load");
-    expect(element).toBeInTheDocument();
-  });
-
-  it('has a cancel button', () => {
-    const element = getByTestId("cancel");
-    expect(element).toBeInTheDocument();
-
-  });
-
-  it('cancel button clears the modal', () => {
-    const element = getByTestId("cancel");
-    expect(element).toBeInTheDocument();
-
-    fireEvent.click(element);
-
-    expect(onClose).toHaveBeenCalled();
-  });
 });

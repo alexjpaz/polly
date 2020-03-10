@@ -1,22 +1,17 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import { AppContext } from '../../AppContext';
-import { WorkbookFileField } from './WorkbookFileField';
+import { WorkbookSourceSelector } from './WorkbookSourceSelector';
 
 export function LoadWorkbookDialog({ isOpen = false, onClose }) {
   const ctx = React.useContext(AppContext);
 
-  const [ workbookData , setWorkbookData ] = React.useState(null);
-
-  const handleClose = (e) => {
-    e.stopPropagation();
-    ctx.setWorkbookData(workbookData);
+  const onSourceChange = (data) => {
+    ctx.setWorkbookData(data);
     onClose();
   };
 
@@ -33,16 +28,8 @@ export function LoadWorkbookDialog({ isOpen = false, onClose }) {
           <DialogContentText>
             Please specify a source for your workbook.
           </DialogContentText>
-          <WorkbookFileField onClose={setWorkbookData}/>
+          <WorkbookSourceSelector onSourceChange={onSourceChange} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCancel} color="default" data-testid="cancel" >
-            Cancel
-          </Button>
-          <Button onClick={handleClose} disabled={!workbookData} color="primary" data-testid="load">
-            Load
-          </Button>
-        </DialogActions>
       </Dialog>
     </React.Fragment>
   );
