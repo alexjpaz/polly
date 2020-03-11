@@ -11,14 +11,14 @@ export function PhraseItem({ phrase }) {
   );
 }
 
-export default function PhraseList({ phrases, onSelectItem }) {
+export default function PhraseList({ phrases = [], onSelectItem }) {
 
-  const handleClick = (phrase) => {
-    onSelectItem(phrase);
+  const handleClick = (phrase, index) => {
+    onSelectItem(phrase, index);
   };
 
-  const items = phrases.map((phrase) => (
-    <div onClick={e => handleClick(phrase)}>
+  const items = phrases.map((phrase, index) => (
+    <div onClick={e => handleClick(phrase, index)}>
       <PhraseItem phrase={phrase}  />
     </div>
   ));
