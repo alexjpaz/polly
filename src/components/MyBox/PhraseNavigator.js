@@ -31,12 +31,13 @@ export function PhraseNavigator({ phrases, setCurrentPhrase }) {
     setOpen(true);
   }
 
-  const handlePhraseDialogClose = (phrase, index) => {
-
+  const onSelectItem = (phrase, index) => {
     setCurrentPhrase(phrase);
     setIndex(index);
     setOpen(false);
   };
+
+  const onCancel = () => setOpen(false);
 
   return (
     <React.Fragment>
@@ -45,7 +46,7 @@ export function PhraseNavigator({ phrases, setCurrentPhrase }) {
         <Button onClick={openPhraseDialog}>{index + 1} / {phrases.length}</Button>
         <Button onClick={next}>Next</Button>
       </ButtonGroup>
-      <PhraseDialog open={open} phrases={phrases} handleClose={handlePhraseDialogClose} />
+      <PhraseDialog open={open} onCancel={onCancel} phrases={phrases} onSelectItem={onSelectItem} />
     </React.Fragment>
   );
 

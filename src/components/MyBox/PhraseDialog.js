@@ -5,14 +5,14 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import PhraseList from './PhraseList';
 
-export default function PhraseDialog({ open, phrases, handleClose }) {
+export default function PhraseDialog({ open, phrases, onCancel, onSelectItem }) {
   return (
-    <Dialog fullScreen open={open} onClose={handleClose}>
+    <Dialog fullScreen open={open} onClose={onCancel}>
       <DialogTitle>Phrases</DialogTitle>
       <DialogContent>
         <PhraseList
           phrases={phrases}
-          onSelectItem={handleClose}
+          onSelectItem={onSelectItem}
           />
       </DialogContent>
     </Dialog>
