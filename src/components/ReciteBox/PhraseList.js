@@ -18,7 +18,7 @@ export default function PhraseList({ phrases = [], onSelectItem }) {
   };
 
   const items = phrases.map((phrase, index) => (
-    <div onClick={e => handleClick(phrase, index)}>
+    <div key={index} onClick={e => handleClick(phrase, index)}>
       <PhraseItem phrase={phrase}  />
     </div>
   ));
