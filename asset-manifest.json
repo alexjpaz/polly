@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/polly/static/css/main.e0a32332.chunk.css",
+    "main.js": "/polly/static/js/main.c6e36213.chunk.js",
+    "main.js.map": "/polly/static/js/main.c6e36213.chunk.js.map",
+    "runtime-main.js": "/polly/static/js/runtime-main.d308d31c.js",
+    "runtime-main.js.map": "/polly/static/js/runtime-main.d308d31c.js.map",
+    "static/js/2.cc8fcdcb.chunk.js": "/polly/static/js/2.cc8fcdcb.chunk.js",
+    "static/js/2.cc8fcdcb.chunk.js.map": "/polly/static/js/2.cc8fcdcb.chunk.js.map",
+    "index.html": "/polly/index.html",
+    "precache-manifest.5bb41b06fc903637d4a4c6f03631cf20.js": "/polly/precache-manifest.5bb41b06fc903637d4a4c6f03631cf20.js",
+    "service-worker.js": "/polly/service-worker.js",
+    "static/css/main.e0a32332.chunk.css.map": "/polly/static/css/main.e0a32332.chunk.css.map",
+    "static/js/2.cc8fcdcb.chunk.js.LICENSE": "/polly/static/js/2.cc8fcdcb.chunk.js.LICENSE",
+    "static/media/logo192.png": "/polly/static/media/logo192.2fd840b8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d308d31c.js",
+    "static/js/2.cc8fcdcb.chunk.js",
+    "static/css/main.e0a32332.chunk.css",
+    "static/js/main.c6e36213.chunk.js"
+  ]
+}
