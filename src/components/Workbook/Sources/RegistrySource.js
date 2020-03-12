@@ -7,30 +7,91 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import PublicIcon from '@material-ui/icons/Public';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 
-import sampleData from '../../../datasources/foo.json';
+// TODO - Need to extract and test
+export function useFetchRegistryData() {
+  const registryUrl = "/sample-registry.json"
+
+  const [ registry, setRegistry ] = React.useState({
+    workbooks: []
+  });
+
+  React.useEffect(() => {
+    if(!registryUrl) {
+      return;
+    }
+
+    const fetchData = async () => {
+      const data = await fetch(registryUrl)
+        .then(r => r.json())
+      ;
+
+      setRegistry(data);
+    };
+
+    fetchData();
+  }, [ registryUrl ]);
+
+  return [ registry, setRegistry ];
+}
+
+export function useFetchWorkbook() {
+  const [ workbookUrl, setWorkbookUrl ] = React.useState(null);
+  const [ workbook, setWorkbook ] = React.useState(null);
+
+  React.useEffect(() => {
+    if(!workbookUrl) {
+      return;
+    }
+
+    const fetchData = async () => {
+      const data = await fetch(workbookUrl)
+        .then(r => r.json())
+      ;
+
+      setWorkbook(data);
+    };
+
+    fetchData();
+  }, [ workbookUrl ]);
+
+
+  return [ workbook, setWorkbookUrl ];
+}
 
 export function RegistryDialog({ open, onClose, onLoad }) {
-  const [ url, setUrl ] = React.useState(null);
+  // TODO - Need to extract and test
+  const [ registry ] = useFetchRegistryData();
 
-  const submit = async (e) => {
+  const [ workbook, fetchWorkbook ] = useFetchWorkbook();
+
+  let workbookItems = [];
+
+  const foo = (workbook) => (e) => {
     e.stopPropagation();
-
-    try {
-      onLoad({});
-    } catch(e) {
-      window.alert("Failed to load data from URL:" + e.message);
-      throw e;
-    }
+    fetchWorkbook(workbook.url)
   };
+
+  React.useEffect(() => {
+    if(workbook) {
+      onLoad(workbook);
+    }
+  }, [ workbook, onLoad ])
+
+  workbookItems = registry.workbooks.map((workbook) => (
+    <ListItemText
+      key={workbook.name}
+      primary={workbook.name}
+      secondary={[workbook.description, workbook.url].join(' – ')}
+      onClick={foo(workbook)} />
+  ));
 
   return (
     <Dialog fullScreen={true} open={open} onClose={onClose} aria-labelledby="form-dialog-title">
       <DialogContent>
         <List component="nav">
           <ListItem button>
-            <ListItemText primary={1} secondary={2} />
+            {workbookItems}
           </ListItem>
         </List>
       </DialogContent>
@@ -38,12 +99,22 @@ export function RegistryDialog({ open, onClose, onLoad }) {
   );
 }
 
-
-
 export function RegistrySource({ onSourceChange }) {
+  const [ open, setOpen ] = React.useState(false);
+
   const onClick = (e) => {
     e.stopPropagation();
-    onSourceChange(sampleData);
+    setOpen(true);
+  };
+
+  const onLoad = (data) => {
+    setOpen(false);
+    onSourceChange(data);
+  };
+
+  const onClose = (e) => {
+    e.stopPropagation();
+    setOpen(false);
   };
 
   return (
@@ -52,7 +123,7 @@ export function RegistrySource({ onSourceChange }) {
         <PublicIcon />
       </ListItemIcon>
       <ListItemText primary='Registry' secondary='Load workbooks from the public registry' />
-      <RegistryDialog open={true} />
+      <RegistryDialog open={open} onLoad={onLoad} onClose={onClose} />
     </ListItem>
   );
 }
