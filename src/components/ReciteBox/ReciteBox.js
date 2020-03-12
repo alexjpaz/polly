@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 
 import AppContext from '../../AppContext';
 
-import './MyBox.css';
+import './ReciteBox.css';
 
 import Container from '@material-ui/core/Container';
 
@@ -17,7 +17,7 @@ import ReciteFabButton from './ReciteFabButton';
 
 import PhraseNavigator from './PhraseNavigator';
 
-function MyBox() {
+function ReciteBox() {
   const data = useContext(AppContext);
 
   let [ phrase, setPhrase ] = useState(data.phrases[0]);
@@ -48,4 +48,4 @@ function MyBox() {
   );
 }
 
-export default MyBox;
+export default ReciteBox;

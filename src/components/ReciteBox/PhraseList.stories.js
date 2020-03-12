@@ -2,15 +2,15 @@ import React from 'react';
 
 import { action } from '@storybook/addon-actions';
 
-import PhraseDialog from './PhraseDialog';
+import PhraseList from './PhraseList';
 
 import data from '../../datasources/foo.json';
 
 export default {
-  title: 'components/MyBox/PhraseDialog',
+  title: 'components/ReciteBox/PhraseList',
 };
 
 export const withPhrases = () => (
-  <PhraseDialog phrases={data.phrases} onSelectItem={action("selectItem")} />
+  <PhraseList phrases={data.phrases} onSelectItem={action("selectItem")} />
 );
 

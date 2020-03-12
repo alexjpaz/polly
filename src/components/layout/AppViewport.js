@@ -6,13 +6,13 @@ import Permissions from '../Permissions';
 
 import TopBar from './TopBar';
 
-import MyBox from '../MyBox/MyBox';
+import ReciteBox from '../ReciteBox/ReciteBox';
 
 export default function AppViewport() {
   return (
     <Box height="100%">
       <TopBar />
-      <MyBox />
+      <ReciteBox />
       <Permissions />
     </Box>
   );
