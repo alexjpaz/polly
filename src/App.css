@@ -1,4 +1,4 @@
-html.themed, body.themed {
+html.themed, body.themed, .App-themed {
   background-color: #212121;
   padding: 0;
   margin: 0;
