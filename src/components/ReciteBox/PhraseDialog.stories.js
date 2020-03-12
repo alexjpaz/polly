@@ -11,6 +11,10 @@ export default {
 };
 
 export const withPhrases = () => (
-  <PhraseDialog phrases={data.phrases} onSelectItem={action("selectItem")} />
+  <PhraseDialog
+    open={true}
+    phrases={data.phrases}
+    onCancel={action("cancel")}
+    onSelectItem={action("selectItem")} />
 );
 
