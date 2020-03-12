@@ -1,0 +1,9 @@
+{
+    "workbooks": [
+        {
+            "name": "Sample",
+            "description": "Sample Workbook",
+            "url": "sample-workbook.json"
+        }
+    ]
+}
