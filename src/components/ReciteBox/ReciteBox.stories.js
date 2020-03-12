@@ -9,7 +9,7 @@ export default {
   title: 'components/ReciteBox',
 };
 
-export const foo = () => (
+export const withDefaultData = () => (
   <AppContext.Provider value={data}>
     <ReciteBox />
   </AppContext.Provider>
