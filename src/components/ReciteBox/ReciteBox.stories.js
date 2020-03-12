@@ -1,17 +1,17 @@
 import React from 'react';
 
 import { AppContext } from '../../App';
-import MyBox from './MyBox';
+import ReciteBox from './ReciteBox';
 
 import data from '../../datasources/foo.json';
 
 export default {
-  title: 'components/MyBox',
+  title: 'components/ReciteBox',
 };
 
 export const foo = () => (
   <AppContext.Provider value={data}>
-    <MyBox />
+    <ReciteBox />
     <p>lol</p>
   </AppContext.Provider>
 );

@@ -3,7 +3,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { DefaultAppContextProvider } from '../../AppContext';
-import MyBox from './MyBox';
+import ReciteBox from './ReciteBox';
 
 describe('default', () => {
 
@@ -12,7 +12,7 @@ describe('default', () => {
   beforeEach(() => {
     ({ getByText } = render(
       <DefaultAppContextProvider>
-        <MyBox />
+        <ReciteBox />
       </DefaultAppContextProvider>
     ));
   });

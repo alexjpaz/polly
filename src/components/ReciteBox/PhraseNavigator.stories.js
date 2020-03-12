@@ -7,7 +7,7 @@ import { PhraseNavigator } from './PhraseNavigator';
 import data from '../../datasources/foo.json';
 
 export default {
-  title: 'components/MyBox/PhraseNavigator',
+  title: 'components/ReciteBox/PhraseNavigator',
 };
 
 export const withPhrases = () => (
